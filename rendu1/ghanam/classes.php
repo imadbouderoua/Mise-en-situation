@@ -37,20 +37,19 @@ public function select($sql,$email,$new_password){
 
 
 public function select_msg(){
-    $sql = "SELECT * FROM room_chat ";
-   
-    
+    $sql = "SELECT * FROM room_chat ";   
     $result = mysqli_query($this->conn,$sql);
     
     if ($result) {
         
         while ($row = mysqli_fetch_assoc($result)) {
             
-            echo '<div class="w-fit rounded-md bg-pink-700 text-white p-1 m-1 boder" id="conntent">' . $row['message'] . '</div>';
-            
+            echo '<div class="w-fit rounded-md bg-pink-700 text-white p-1 m-1 boder" id="content_' . $row['id_msg'] . '">' . $row['message'] . '</div> <br>';
+        
         }
         
     }else {
+        
          die(var_dump($result));
     }
 }
