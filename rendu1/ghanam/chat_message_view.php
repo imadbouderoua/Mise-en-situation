@@ -15,6 +15,50 @@
     <input type="text" placeholder="enter message" class="w-4/5 h-14" id="send_message" required>
     <input type="submit" value="send" id="send">
    </div>
+
+   <script>
+        setInterval(function() {
+            $(document).ready(function(){
+            
+                $.ajax({
+                    "type":"GET",
+                    "url":"fetch.php",
+                    success:function(data){
+                        $("#conntent").html(data);
+                    }
+                });
+            
+        });
+        },1);
+
+
+
+
+        $(document).ready(function(){
+            $("#send").click(function(){
+                var send_message = $("#send_message").val();
+                $.ajax({
+                    "type":"POST",
+                    "url":"send.php",
+                    "data":{
+                        send_message:send_message
+                    },
+                    success:function(response){
+                        console.log("dkhal hna: ", response);
+                        $("#send_message").val('');
+                    },
+                    error:function(error) {
+                        console.log("\n madkhelch: " , error);
+                    },
+                })
+            });
+        });
+        
+
+
+        
+
+    </script>
     
 </body>
 </html>
