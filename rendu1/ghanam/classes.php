@@ -50,7 +50,7 @@ public function select_msg(){
         
     }else {
         
-         die(var_dump($result));
+        die(var_dump($result));
     }
 }
 
